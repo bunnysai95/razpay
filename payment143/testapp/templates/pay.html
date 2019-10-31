@@ -1,0 +1,75 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gateway</title>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+function myFunction(){
+var options = {
+    "key": "rzp_live_7jAYHrhRwvQeDL",
+    "amount": "100",
+    "currency": "INR",
+    "name": "avira foundation",
+<!--    "order_id": "{{orderid}}"-->
+    "description": "for exam  ",
+    "image": "",
+<!--    "method": "card",-->
+<!--    "subscription_id": "sub_DWb4Wj5UtlquHk",-->
+<!--    "redirect": "true",-->
+<!--    "callback_url": "http://localhost:2000.0.0.8000/application",-->
+
+
+<!--    "handler": function (response){-->
+<!--        alert(response.razorpay_payment_id);-->
+<!--        alert(response.razorpay_order_id);-->
+<!--        alert(response.razorpay_signature);-->
+
+<!--    },-->
+
+    "notes": {
+        "address": "note value"
+    },
+    "theme": {
+        "color": "#F37254"
+    }
+};
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+}
+</script>
+
+
+<!--function randString(x){-->
+<!--    var s = "";-->
+<!--    while(s.length<x&&x>0){-->
+<!--        var r = Math.random();-->
+<!--        s+= (r<0.1?Math.floor(r*100):String.fromCharCode(Math.floor(r*26) + (r>0.5?97:65)));-->
+<!--    }-->
+<!--    return s;-->
+<!--document.getElementById("foo").value = randString(10);-->
+
+
+
+</head>
+<!--<button >payCheckout</button>-->
+
+<body aligin="center">
+  <center>
+    <ul >
+<!--         <input type="hidden" name="orderid" id="orderid">-->
+        <li style="color:#000000;" ><a id="rzp-button1" onclick="myFunction()" ><img src="{% static 'images/razorpay.png' %}" style="width:30%">[Payment GateWay]</a></li>
+        <li style="color:#000000;">(Transaction charges Applicable)<sup style="color:red;">*</sup></li>
+        <hr style="border:1px solid #000000;">
+        <li style="color:#000000;"><a href="/payment2" target="_blank"><img src="{% static 'images/bhimupi.png' %}" style="width:30%"></a></li>
+        <li style="color:#000000;">(No Transaction charges Applicable)<sup style="color:red;">*</sup></li>
+    </ul>
+  </center>
+</body>
+</html>
